@@ -1,211 +1,127 @@
+package libraryManagementSystem;
+
 import java.util.*;
+import serviceLayer.*;
 
 //this is my service class
-public class LMS {
+public class LMSMenu { // change to LMSMenu
 
 	public static Scanner keyboard;
-
-	public static ArrayList<Author> authorList = new ArrayList<Author>(1000);
-	public static ArrayList<Book> bookList = new ArrayList<Book>(1000);
-	public static ArrayList<Publisher> publisherList = new ArrayList<Publisher>(1000);
-	
-	Author author = new Author(authorID, authorName);
-	Book book = new Book(bookID, authorID, publisherID, bookTitle);
-	Publisher publisher = new Publisher(publisherID, publisherName);
-
-/*
-	public static void createBook(String name, String author, String publisher, String userBookID) {
-		Book newBook = new Book(userBookID, author, publisher, name);
-		bookList.add(newBook);
-	}
-
-	public static void deleteBook(String userBookID) {
-		for (int i = 0; i < bookList.size(); i++) {
-
-			if (bookList.get(i).bookID.equals(userBookID)) {
-				bookList.remove(i);
-				break;
-			}
-		}
-	}
-
-	public static void updateBook(String userBookID, String userBookTitle, String userAuthorInput,
-			String userPublisherInput) {
-		for (int i = 0; i < bookList.size(); i++) {
-			if (bookList.get(i).bookID.equals(userBookID)) {
-				bookList.get(i).setauthorID();
-				bookList.get(i).setpublisherID(publisherID);
-				bookList.get(i).setBookName(userBookTitle);
-				System.out.println(bookList.get(i).getBookName(), bookList.get(i).getBookID(),
-						bookList.get(i).getpublisherID(), bookList.get(i).getAuthorID()); // fix the syntax
-				break;
-			}
-		}
-	}
-
-	public static void printBookInfo(String userBookID) {
-		for (int i = 0; i < bookList.size(); i++) {
-			if (bookList.get(i).equals(userBookID)) {
-				System.out.println("Title: " + bookList.get(i).getBookName() + "ISBN: " + bookList.get(i).getBookID()
-						+ "Publisher: " + bookList.get(i).getpublisherID() + bookList.get(i).getAuthorID());
-			}
-		}
-	}
-
-	public static void createAuthor(String name) {
-
-	}
-
-	public static void addAuthor() {
-
-	}
-
-	public static void deleteAuthor(int userAuthorId) {
-
-	}
-
-	public static void updateAuthor(int userAuthorId) {
-
-	}
-
-	public static void printAuthor(String userAuthorName) {
-
-	}
-
-	public static void createPublisher(String userPublisherName) {
-
-	}
-
-	public static void deletePublisher(int userPublisherID) {
-
-	}
-
-	public static void updatePublisher(int userPublisherID) {
-
-	}
-
-	public static void printPublisherInfo(int userPublisherID) {
-
-	}
-*/
-	public static void main(String[] args) {
+	public static void initializeMenu() { 
 
 		keyboard = new Scanner(System.in);
 
-		int choice = keyboard.nextInt();
-
 		MenuUI.displayMainMenu();
+		
+		int choice = keyboard.nextInt();
 
 		switch (choice) {
 		case 1: {
-			System.out.println("Please input the name of the author that you would like to add.");
+			System.out.println("Enter the name of the author that you would like to add.");
 
-			String userAuthorName = keyboard.nextLine();
+			String userAuthorName = keyboard.next();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			AuthorOperations.createNewAuthor(userAuthorName);
-
-			System.out.println("Author has been created.");
+			break;
 		}
 
 		case 2: {
-			System.out.println("Please input the author ID that you are trying to update.");
+			System.out.println("Enter the author ID that you are trying to update.");
 
 			int userAuthorId = keyboard.nextInt();
 			
-			System.out.println("Please input the Author Name.");
+			System.out.println("Enter the Author Name.");
 
-			String userAuthorName = keyboard.nextLine();
+			String userAuthorName = keyboard.next();
 
 			AuthorOperations.updateAuthor(userAuthorId, userAuthorName);
 
-			System.out.println("Thinking...");
-
-			System.out.println("Author has been updated.");
+			System.out.println("Processing...");
+			break;
 		}
 
 		case 3: {
-			System.out.println("Please input the author ID that you are trying to delete.");
+			System.out.println("Enter the author ID that you are trying to delete.");
 
-			int userAuthorId = keyboard.nextInt();
+			int userAuthorID = keyboard.nextInt();
 
-			AuthorOperations.deleteAuthor(userAuthorId);
-			BookOperations.deleteBooksByAuthorPublisher(userAuthorID, 0)
+			AuthorOperations.deleteAuthor(userAuthorID);
+			BookOperations.deleteBooksByAuthorPublisher(userAuthorID, 0);
 
-			System.out.println("Thinking...");
-			
-
-			System.out.println("Author and all his books have been deleted. So sad to see them go.");
+			System.out.println("Processing...");
+			break;
 		}
 
 		case 4: {
-			System.out.println("Please input the author name that you would like to find information on.");
+			System.out.println("Enter the author name to get their unique ID.");
 
-			String userAuthorName = keyboard.nextLine();
+			String userAuthorName = keyboard.next();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			AuthorOperations.retrieveAuthor(userAuthorName);
+			break;
 		}
 
 		case 5: {
-			System.out.println("Please input the name of the publisher that you would like to add.");
+			System.out.println("Enter the name of the publisher that you would like to add.");
 
-			String userPublisherName = keyboard.nextLine();
+			String userPublisherName = keyboard.next();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			PublisherOperations.createNewPublisher(userPublisherName);
+			break;
 		}
 
 		case 6: {
-			System.out.println("Please input the publisherID that you would like to update.");
+			System.out.println("Enter the publisherID that you would like to update.");
 
 			int userPublisherID = keyboard.nextInt();
 
-			System.out.println("Please input the publisherID that you would like to update.");
+			System.out.println("Enter the new publisher name.");
 			
-			String userPublisherName = keyboard.nextLine()
+			String userPublisherName = keyboard.next();
 
 			PublisherOperations.updatePublisher(userPublisherID, userPublisherName);
-
-			System.out.println("Publisher has been updated.");
+			break;
 		}
 
 		case 7: {
-			System.out.println("Please input the publisher ID that you would like to delete.");
+			System.out.println("Enter the publisher ID that you would like to delete.");
 
 			int userPublisherID = keyboard.nextInt();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			PublisherOperations.deletePublisher(userPublisherID);
-			BookOperations.deleteBooksByAuthorPublisher(0, userPublisherID)
-
-			System.out.println("The publisher has been deleted with all their books. I heard they weren't very good.");
+			BookOperations.deleteBooksByAuthorPublisher(0, userPublisherID);
+			break;
 		}
 
 		case 8: {
-			System.out.println("Please input the publisher ID that you would like information on.");
+			System.out.println("Enter the publisher name that you would like information on.");
 
-			String userPublisherName = keyboard.nextLine();
+			String userPublisherName = keyboard.next();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			PublisherOperations.retrievePublisher(userPublisherName);
+			break;
 		}
 
 		case 9: {
-			System.out.println("Please input the following information to add a book to the LMS: ");
+			System.out.println("Enter the following information to add a book to the LMS: ");
 
 			System.out.print("Book ISBN: "); // add new line characters
 
-			String userBookID = keyboard.nextLine();
+			String userBookID = keyboard.next();
 
 			System.out.print("Book Title: ");
 
-			String userBookTitle = keyboard.nextLine();
+			String userBookTitle = keyboard.next();
 
 			System.out.print("AuthorID: ");
 
@@ -215,57 +131,63 @@ public class LMS {
 
 			int userPublisherID = keyboard.nextInt();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			BookOperations.createNewBook(userBookID, userAuthorID, userPublisherID, userBookTitle);
+			break;
 		}
 
 		case 10: {
-			System.out.println("Please input the following information to modify a book in the LMS: ");
+			System.out.println("Enter the following information to modify a book in the LMS: ");
 
 			System.out.print("Book ISBN: "); // add new line characters
 
-			String userBookID = keyboard.nextLine();
+			String userBookID = keyboard.next();
 
 			System.out.print("Book Title: ");
 
-			String userBookTitle = keyboard.nextLine();
+			String userBookTitle = keyboard.next();
 
 			System.out.print("AuthorID: ");
 
-			int userAuthorInputID = keyboard.nextLine();
+			int userAuthorID = keyboard.nextInt();
 
 			System.out.print("PublisherID: ");
 
-			int userPublisherID = keyboard.nextLine();
+			int userPublisherID = keyboard.nextInt();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			BookOperations.updateBook(userBookID, userAuthorID, userPublisherID, userBookTitle);
+			break;
 		}
 
 		case 11: {
-			System.out.println("Please input the book ISBN that you would like to delete.");
+			System.out.println("Enter the book ISBN that you would like to delete.");
 
-			String userBookID = keyboard.nextLine();
+			String userBookID = keyboard.next();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			BookOperations.deleteBook(userBookID);
-
-			System.out.println("Book has been deleted. 0/5 stars.");
+			break;
 		}
 
 		case 12: {
-			System.out.println("Please input the book ISBN that you would like to find.");
+			System.out.println("Enter the name of the book to get ISBN.");
 
-			String userBookID = keyboard.nextLine();
+			String userBookID = keyboard.next();
 
-			System.out.println("Thinking...");
+			System.out.println("Processing...");
 
 			BookOperations.retrieveBook(userBookID);
+			break;
 		}
-
+		
+		case 13: { // this is the exit code
+			// call csv writer
+			System.exit(0);
+		}
 		}
 	}
 }
