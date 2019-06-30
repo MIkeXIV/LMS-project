@@ -1,14 +1,14 @@
 package dao;
 
-public class DAO {
-	
-	import java.util.*;
-
+import java.util.*;
 import models.Author;
 import models.Book;
 import models.Publisher;
 
 import java.io.*;
+
+public class DAO {
+	
 
 		public static Scanner inputStream;
 
@@ -16,7 +16,7 @@ import java.io.*;
 		public static ArrayList<Book> bookList = new ArrayList<Book>(1000);
 		public static ArrayList<Publisher> publisherList = new ArrayList<Publisher>(1000);
 
-		public static void main(String[] args) {
+		public void initialize() {
 
 			String currentLine = "";
 			int max = 1000;
@@ -35,25 +35,16 @@ import java.io.*;
 
 				currentLine = inputStream.nextLine();
 
-				String[] delimitedStrings = currentLine.split(";");
+				String[] delimitedStrings = currentLine.split(",");
 				
 				String bookID = delimitedStrings[0];
-				int authorID = delimitedStrings[1];
-				int publisherID = delimitedStrings[2];
+				int authorID = Integer.parseInt(delimitedStrings[1]);
+				int publisherID = Integer.parseInt(delimitedStrings[2]);
 				String bookTitle = delimitedStrings[3];
 				
 				Book book = new Book(bookID, authorID, publisherID, bookTitle);
-				/*
-				String authorName = delimitedStrings[0];
-				String bookTitle = delimitedStrings[1];
-				String bookID = delimitedStrings[2];
-				String publisherName = delimitedStrings[3];
-				*/
-				
-				Author author = new Author(authorID, authorName);
-				
-				Publisher publisher = new Publisher(publisherID, publisherName);
-				
+				bookList.add(book);
+		
 			}
 			
 			try {
@@ -68,17 +59,13 @@ import java.io.*;
 
 				currentLine = inputStream.nextLine();
 
-				String[] delimitedStrings = currentLine.split(";");
+				String[] delimitedStrings = currentLine.split(",");
 				
-				int authorID = delimitedStrings[0];
+				int authorID = Integer.parseInt(delimitedStrings[0]);
 				String authorName = delimitedStrings[1];				
 				Author author = new Author(authorID, authorName);
-				/*
-				String authorName = delimitedStrings[0];
-				String bookTitle = delimitedStrings[1];
-				String bookID = delimitedStrings[2];
-				String publisherName = delimitedStrings[3];
-				*/
+				authorList.add(author);
+			
 			}
 			
 
@@ -94,17 +81,13 @@ import java.io.*;
 
 				currentLine = inputStream.nextLine();
 
-				String[] delimitedStrings = currentLine.split(";");
+				String[] delimitedStrings = currentLine.split(",");
 				
-				int publisherID = delimitedStrings[0];
+				int publisherID = Integer.parseInt(delimitedStrings[0]);
 				String publisherName = delimitedStrings[1];
 				Publisher publisher = new Publisher(publisherID, publisherName);
-				/*
-				String authorName = delimitedStrings[0];
-				String bookTitle = delimitedStrings[1];
-				String bookID = delimitedStrings[2];
-				String publisherName = delimitedStrings[3];
-				*/				
+				publisherList.add(publisher);
+					
 			}
-	
+		}
 }
