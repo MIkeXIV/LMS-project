@@ -7,31 +7,31 @@ public class Book {
 	private int publisherID = 0;
 	private String bookName = "NO BOOKNAME";
 	
-	public String getbookId() { 
+	public String getBookID() { 
 		return bookID;
 		}
-	public void setbookId(String bookID) { 
+	public void setBookID(String bookID) { 
 		this.bookID = bookID;
 		}
 	
 	
-	public int getauthorId() { 
+	public int getAuthorID() { 
 		return authorID;
 		}
-	public void setauthorID(int authorID) { 
+	public void setAuthorID(int authorID) { 
 		this.authorID = authorID;
 		}
 	
 	
-	public int getpublisherID() { 
+	public int getPublisherID() { 
 		return publisherID;
 		}
-	public void setpublisherId(int publisherID) { 
+	public void setPublisherID(int publisherID) { 
 		this.publisherID = publisherID;
 		}
 	
 	
-	public String getbookName() { 
+	public String getName() { 
 		return bookName;
 		}
 	public void setName(String bookName) { 

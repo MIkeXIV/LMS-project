@@ -1,30 +1,30 @@
 package models;
 
-class Author {
+public class Author {
 	
-	private String ID = "NO ID";
-	private String Name = "NO AUTHOR";
+	private int ID = 0;
+	private String name = "NO AUTHOR";
 	
 	// do i need these atrributes and constructor
 	
-	public String getID() {
-		return this.id;
+	public int getID() {
+		return this.ID;
 	}
-	public void setID() {
-		this.ID = ID;
+	public void setID(int authorNewID) {
+		this.ID = authorNewID;
 	}
 	public String getName() {
 		return this.name;
 	}
-	public void setName() {
-		this.Name = Name;
+	public void setName(String newName) {
+		this.name = newName;
 	}
 	
 	public Author() {}
 	
-	public Author(String ID, String Name) {
+	public Author(int ID, String Name) {
 		this.ID = ID;
-		this.Name = Name;
+		this.name = Name;
 	}
 	
 }
