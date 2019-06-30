@@ -1,75 +1,92 @@
 package serviceLayer;
 
 import java.util.*;
-
+import models.*;
 import dao.DAO;
-
 import java.io.*;
 
 public class BookOperations {
 
-	// public static ArrayDAO.books<Author> authorDAO.books = new ArrayDAO.books<Author>(); this
-	// would be your new DAO.books
+	// public static ArrayDAO.bookList<Author> authorDAO.bookList = new ArrayDAO.bookList<Author>(); this
+	// would be your new DAO.bookList
 
-	public static void createNewBook(String bookID, int authorID, int publisherID, String bookName) { // need the DAO.books
+	public static void createNewBook(String bookID, int authorID, int publisherID, String bookName) { // need the DAO.bookList
 																										// full name
 		// book id is ISBN
 		Book newBook = new Book(bookID, authorID, publisherID, bookName); 
-		DAO.books.add(newBook);
+		DAO.bookList.add(newBook);
 		System.out.println("Added new book");
 	}
 
-	public static void retrieveBook(String searchName) { // need the DAO.books full name
-		for (int i = 0; i < DAO.books.size(); i++) { // need the DAO.books full name //work on your spacing! can't read this!!!
-													// also, with a DAO.books, it would be DAO.books.size
-			if (DAO.books().bookName.equals(searchName)) {
-				System.out.println("book name" + DAO.books.get(i).getbookName() + DAO.books.get(i).getbookID(), DAO.books.get(i).getpublisherID(),
-						DAO.books.get(i).getAuthorID()); // fix the syntax
+	public static void retrieveBook(String searchName) { 
+		int empty = 0;
+		for (int i = 0; i < DAO.bookList.size(); i++) { 
+			if (DAO.bookList.get(i).getName().equals(searchName)) {
+				System.out.print(DAO.bookList.get(i).getName() +"  "+ DAO.bookList.get(i).getBookID() + "   ");
+				System.out.print(DAO.bookList.get(i).getPublisherID());
+				System.out.print("  ");
+				System.out.print(DAO.bookList.get(i).getAuthorID());
+				empty++;
 			}
+		}
+		if (empty < 1) {
+			System.out.println("Book not found");
 		}
 	}
 
 	public static void updateBook(String searchID, int authorID, int publisherID, String bookName) {
-
-		for (int i = 0; i < DAO.books.size(); i++) { // need the DAO.books full name
-			if (DAO.books.get(i).bookID.equals(searchID)) {
-				DAO.books.get(i).setauthorID(authorID);
-				DAO.books.get(i).setpublisherID(publisherID);
-				DAO.books.get(i).setbookName(bookName);
-				System.out.println(DAO.books.get(i).getbookName(), DAO.books.get(i).getbookID(), DAO.books.get(i).getpublisherID(),
-						DAO.books.get(i).getAuthorID()); // fix the syntax
+		int empty = 0;
+		for (int i = 0; i < DAO.bookList.size(); i++) { // need the DAO.bookList full name
+			if (DAO.bookList.get(i).getBookID().equals(searchID)) {
+				DAO.bookList.get(i).setAuthorID(authorID);
+				DAO.bookList.get(i).setPublisherID(publisherID);
+				DAO.bookList.get(i).setName(bookName);
+				System.out.println("updated book");
+				empty++;
 				break;
 			}
+		}
+		if (empty < 1) {
+			System.out.println("Please enter the correct BookID");
 		}
 
 	}
 
 	public static void deleteBook(String searchID) {
-
-		for (int i = 0; i < DAO.books.size(); i++) {
-
-			if (DAO.books.get(i).bookID.equals(searchID)) {
-				DAO.books.remove(i);
+		int empty = 0;
+		for (int i = 0; i < DAO.bookList.size(); i++) {
+			if (DAO.bookList.get(i).getBookID().equals(searchID)) {
+				DAO.bookList.remove(i);
 				System.out.println("Removed book");
+				empty++;
 				break;
 			}
 		}
-	}
-
-	public static void deleteBooksByAuthorPublisher(int authorID, int pulisherID) {
-		for( int i = 0; i < DAO.books.size(); i++) {
-			if ((DAO.books.get(i).getauthorID() == authorID) && (authorID != 0)) {
-				DAO.books.remove(i)
-			}
-			if (DAO.books.get(i).getpublisherID() == publisherID && publisherID != 0) {
-				DAO.books.remove(i)
+		if (empty < 1) {
+			System.out.println("Please enter the correct BookID");
 		}
 	}
-	
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void deleteBooksByAuthorPublisher(int authorID, int publisherID) {
+		int authCount = 0;
+		int pubCount = 0;
+		for( int i = 0; i < DAO.bookList.size(); i++) {
+			if ((DAO.bookList.get(i).getAuthorID() == authorID) && (authorID != 0)) {
+				DAO.bookList.remove(i);
+				authCount++;
+				
+			}
+			if (DAO.bookList.get(i).getPublisherID() == publisherID && publisherID != 0) {
+				DAO.bookList.remove(i);
+				pubCount++;
+				
+			}
+		}
+		if(authCount > 0) {
+			System.out.println("removed all books by authorID");
+		}
+		if(pubCount > 0) {
+			System.out.println("removed all books by publisherID");
 		}
 	}
 }
