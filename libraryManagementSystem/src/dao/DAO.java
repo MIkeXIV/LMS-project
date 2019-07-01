@@ -24,7 +24,7 @@ public class DAO {
 			int range = max - min + 1;
 
 			try {
-				inputStream = new Scanner(new FileInputStream("C:\\Users\\Mike\\eclipse-workspace\\libraryManagementSystem\\src\\data\\Books.csv"));
+				inputStream = new Scanner(new FileInputStream("Books.csv"));
 			}
 
 			catch (FileNotFoundException e) {
@@ -48,7 +48,7 @@ public class DAO {
 			}
 			
 			try {
-				inputStream = new Scanner(new FileInputStream("C:\\Users\\Mike\\eclipse-workspace\\libraryManagementSystem\\src\\data\\Authors.csv"));
+				inputStream = new Scanner(new FileInputStream("Authors.csv"));
 			}
 
 			catch (FileNotFoundException e) {
@@ -70,7 +70,7 @@ public class DAO {
 			
 
 			try {
-				inputStream = new Scanner(new FileInputStream("C:\\Users\\Mike\\eclipse-workspace\\libraryManagementSystem\\src\\data\\Publishers.csv"));
+				inputStream = new Scanner(new FileInputStream("Publishers.csv"));
 			}
 
 			catch (FileNotFoundException e) {
@@ -91,3 +91,4 @@ public class DAO {
 			}
 		}
 }
+
