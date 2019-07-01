@@ -2,6 +2,7 @@ package libraryManagementSystem;
 
 import java.util.*;
 import serviceLayer.*;
+import dao.DAO;
 
 //this is my service class
 public class LMSMenu { // change to LMSMenu
@@ -186,6 +187,7 @@ public class LMSMenu { // change to LMSMenu
 		
 		case 13: { // this is the exit code
 			// call csv writer
+			DAO.closeLMS();
 			System.exit(0);
 		}
 		}
