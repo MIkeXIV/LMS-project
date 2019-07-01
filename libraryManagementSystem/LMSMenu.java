@@ -28,11 +28,11 @@ public class LMSMenu { // change to LMSMenu
 		}
 
 		case 2: {
-			System.out.println("Enter the author ID that you are trying to update.");
+			System.out.println("Enter the authorID of the author you wish to update.");
 
 			int userAuthorId = keyboard.nextInt();
 			
-			System.out.println("Enter the Author Name.");
+			System.out.println("Enter the new Author Name.");
 
 			String userAuthorName = keyboard.next();
 
@@ -102,7 +102,7 @@ public class LMSMenu { // change to LMSMenu
 		}
 
 		case 8: {
-			System.out.println("Enter the publisher name that you would like information on.");
+			System.out.println("Enter the publisher name to get their uniqueID.");
 
 			String userPublisherName = keyboard.next();
 
