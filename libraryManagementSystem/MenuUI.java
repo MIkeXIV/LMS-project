@@ -15,21 +15,21 @@ public class MenuUI {
 		System.out.println("1) Add an author to the LMS.");
 		System.out.println("2) Modify an author in the LMS.");
 		System.out.println("3) Delete an author from the LMS.");
-		System.out.println("4) Find an author in the LMS.");
+		System.out.println("4) Find an authorID in the LMS.");
 		
 		System.out.println(divider);
 			
 		System.out.println("5) Add a publisher to the LMS.");
 		System.out.println("6) Modify a publisher in the LMS.");
 		System.out.println("7) Delete a publisher from the LMS.");
-		System.out.println("8) Find a publisher in the LMS.");
+		System.out.println("8) Find a publisherID in the LMS.");
 		
 		System.out.println(divider);
 			
 		System.out.println("9) Add a book to the LMS.");
 		System.out.println("10) Modyify a book in the LMS.");
 		System.out.println("11) Delete a book from the LMS.");
-		System.out.println("12) Find a book in the LMS.");
+		System.out.println("12) Find a bookID in the LMS.");
 			
 		System.out.println(divider);
 		
